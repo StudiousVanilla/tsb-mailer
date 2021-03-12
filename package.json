@@ -1,0 +1,24 @@
+{
+  "name": "tsb-mailer",
+  "version": "1.0.0",
+  "description": "simple backend to send emails from contact form using nodemailer",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StudiousVanilla/tsb-mailer.git"
+  },
+  "author": "Oisin Byrne",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StudiousVanilla/tsb-mailer/issues"
+  },
+  "homepage": "https://github.com/StudiousVanilla/tsb-mailer#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemailer": "^6.5.0",
+    "nodemon": "^2.0.7"
+  }
+}

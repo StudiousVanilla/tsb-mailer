@@ -1,0 +1,8 @@
+POST http://localhost:3000 
+content-type: application/json
+
+{
+    "email": "byrne.ois@gmail.com",
+    "name": "Jane Doe",
+    "message": "Where are you going iowth you r lfectlicks blkowing inthe wind?"
+}
