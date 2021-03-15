@@ -1,6 +1,7 @@
 const express = require('express')
+require('dotenv').config()
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000 
 
 // middleware
 app.use(express.json())
@@ -8,7 +9,7 @@ app.use(express.json())
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
+    res.setHeader('Access-Control-Allow-Origin', 'https://studiousvanilla.github.io');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -43,7 +44,7 @@ app.post('/', (req, res) => {
             secure: true, // use SSL
             auth: {
             user: 'tsbdevinfo@gmail.com',
-            pass: 'QS118wFQ4'
+            pass: process.env.EMAIL_PASS
             }
         });
 
@@ -79,5 +80,5 @@ app.post('/', (req, res) => {
 
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`Example app listening at ${port}`)
 })
