@@ -39,54 +39,48 @@ app.post('/', (req, res) => {
     // validate email address
     const emailTest = validator.validate("test@email.com");
 
-    if(emailTest){
+    // sends email based on form data
+    // async..await is not allowed in global scope, must use a wrapper
+    async function main() {
 
-        // sends email based on form data
-        // async..await is not allowed in global scope, must use a wrapper
-        async function main() {
-
-            // create reusable transporter object using the default SMTP transport
-            let transporter = nodemailer.createTransport({
-                host: 'smtp.gmail.com',
-                port: 465,
-                secure: true, // use SSL
-                auth: {
-                user: 'tsbdevinfo@gmail.com',
-                pass: process.env.EMAIL_PASS
-                }
-            });
-
-            // message/email details
-            const mailOptions = {
-                from: 'tsbdevinfo@gmail.com',
-                to: 'byrne.ois@gmail.com',
-                subject: 'TSB Contact form - '+req.body.name,
-                
-                html:
-                `<br>Name: <b>${req.body.name}</b>
-                <br>Email: <b>${req.body.email}</b>
-                <br><br>${req.body.message}`,
-
-                text:
-                `\nName: ${req.body.name}
-                \nEmail: ${req.body.email}
-                \n${req.body.message}`
+        // create reusable transporter object using the default SMTP transport
+        let transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true, // use SSL
+            auth: {
+            user: 'tsbdevinfo@gmail.com',
+            pass: process.env.EMAIL_PASS
             }
+        });
 
-            // sends email using transport and options defined above
-            await transporter.sendMail(mailOptions, (error, info) =>{
-                
-                if(error){
-                    res.send({message: "There was a probelm sending your message. Please Refresh the page and try again"})
-                }
-                else{
-                    res.send({message: 'Your message has been sent '})
-                }
-            });
+        // message/email details
+        const mailOptions = {
+            from: 'tsbdevinfo@gmail.com',
+            to: 'byrne.ois@gmail.com',
+            subject: 'TSB Contact form - '+req.body.name,
+            
+            html:
+            `<br>Name: <b>${req.body.name}</b>
+            <br>Email: <b>${req.body.email}</b>
+            <br><br>${req.body.message}`,
+
+            text:
+            `\nName: ${req.body.name}
+            \nEmail: ${req.body.email}
+            \n${req.body.message}`
         }
-    }
-    else{
-        res.send({message: "please use a valid email address"})
+
+        // sends email using transport and options defined above
+        await transporter.sendMail(mailOptions, (error, info) =>{
+            
+            if(error){
+                res.send({message: "There was a probelm sending your message. Please Refresh the page and try again"})
+            }
+            else{
+                res.send({message: 'Your message has been sent '})
+            }
+        });
     }
 
     main().catch(console.error);
