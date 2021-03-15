@@ -38,7 +38,6 @@ app.post('/', (req, res) => {
 
     // validate email address
     const emailTest = validator.validate("test@email.com");
-    console.log(emailTest)
 
 
     // async..await is not allowed in global scope, must use a wrapper
@@ -77,7 +76,7 @@ app.post('/', (req, res) => {
                 res.send({message: "There was a probelm sending your message. Please Refresh the page and try again"})
             }
             else{
-                res.send({message: 'Your message has been sent'})
+                res.send({message: 'Your message has been sent '+emailTest})
             }
         });
     }
