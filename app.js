@@ -38,6 +38,9 @@ app.post('/', (req, res) => {
 
     // validate email address
     const emailTest = validator.validate("test@email.com");
+    if(!emailTest){
+        res.send({message: "Please input a valid email"})
+    }
 
     // sends email based on form data
     // async..await is not allowed in global scope, must use a wrapper
