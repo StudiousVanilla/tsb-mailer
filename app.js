@@ -2,6 +2,8 @@ const express = require('express')
 require('dotenv').config()
 const app = express()
 const port = process.env.PORT || 3000 
+// for email validation
+var validator = require("email-validator");
 
 // middleware
 app.use(express.json())
@@ -27,12 +29,17 @@ app.use(function (req, res, next) {
 
 
 // need to add validate email from frontend (req.body.email)
-
+// handles post requests from TSB contact page and sends an email with the message fromt eh contatc form
 app.post('/', (req, res) => {
 
     console.log(req.body)
 
     const nodemailer = require("nodemailer");
+
+    // validate email address
+    const emailTest = validator.validate("test@email.com");
+    console.log(emailTest)
+
 
     // async..await is not allowed in global scope, must use a wrapper
     async function main() {
