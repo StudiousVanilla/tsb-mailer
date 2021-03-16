@@ -3,7 +3,9 @@ require('dotenv').config()
 const app = express()
 const port = process.env.PORT || 3000 
 // for email validation
-var validator = require("email-validator");
+const validator = require("email-validator");
+//cookies
+const cookieSession = require("cookie-session")
 
 // middleware
 app.use(express.json())
@@ -29,6 +31,17 @@ app.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 });
+// cookies
+app.use(
+    cookieSession({
+      name: "__session",
+      keys: ["key1"],
+        maxAge: 24 * 60 * 60 * 100,
+        secure: true,
+        httpOnly: true,
+        sameSite: 'none'
+    })
+);
 
 
 // need to add validate email from frontend (req.body.email)
