@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'https://studiousvanilla.github.io');
+    res.setHeader('Access-Control-Allow-Origin', 'https://tsbcoaching.ie');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -48,12 +48,10 @@ app.use(
 // handles post requests from TSB contact page and sends an email with the message fromt eh contatc form
 app.post('/', (req, res) => {
 
-    console.log(req.body)
-
     const nodemailer = require("nodemailer");
 
     // validate email address
-    const emailTest = validator.validate("test@email.com");
+    const emailTest = validator.validate(req.body.email);
     if(!emailTest){
         res.send({message: "Please input a valid email"})
     }
