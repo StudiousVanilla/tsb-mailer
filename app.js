@@ -97,7 +97,7 @@ app.post('/', (req, res) => {
         await transporter.sendMail(mailOptions, (error, info) =>{
             
             if(error){
-                res.send({message: "There was a probelm sending your message. Please Refresh the page and try again"})
+                res.send({message: "Server connection issue. Pease try again later"})
             }
             else{
                 res.send({message: 'Your message has been sent '})
