@@ -97,7 +97,7 @@ app.post('/', (req, res) => {
         await transporter.sendMail(mailOptions, (error, info) =>{
             
             if(error){
-                console.log(info)
+                console.log('test')
                 res.send({message: 'Error'})
             }
             else{
