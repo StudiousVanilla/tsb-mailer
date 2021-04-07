@@ -52,6 +52,8 @@ app.get('/', (req, res)=>{
 // handles post requests from TSB contact page and sends an email with the message fromt eh contatc form
 app.post('/', (req, res) => {
 
+    console.log('test')
+
     const nodemailer = require("nodemailer");
 
     // validate email address
@@ -97,7 +99,6 @@ app.post('/', (req, res) => {
         await transporter.sendMail(mailOptions, (error, info) =>{
             
             if(error){
-                console.log('test')
                 res.send({message: 'Error'})
             }
             else{
