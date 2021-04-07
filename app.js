@@ -43,6 +43,10 @@ app.use(
     })
 );
 
+app.get('/', (req, res)=>{
+    res.send('hello')
+})
+
 
 // need to add validate email from frontend (req.body.email)
 // handles post requests from TSB contact page and sends an email with the message fromt eh contatc form
