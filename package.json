@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/StudiousVanilla/tsb-mailer.git"
+    "url": "git+https://github.com/tsbdevinfo/tsb-mailer.git"
   },
   "author": "Oisin Byrne",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/StudiousVanilla/tsb-mailer/issues"
+    "url": "https://github.com/tsbdevinfo/tsb-mailer/issues"
   },
-  "homepage": "https://github.com/StudiousVanilla/tsb-mailer#readme",
+  "homepage": "https://github.com/tsbdevinfo/tsb-mailer#readme",
   "dependencies": {
     "cookie-session": "^1.4.0",
     "dotenv": "^8.2.0",

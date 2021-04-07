@@ -74,6 +74,7 @@ app.post('/', (req, res) => {
         // message/email details
         const mailOptions = {
             from: 'tsbdevinfo@gmail.com',
+            // update this to mona's email address
             to: 'byrne.ois@gmail.com',
             subject: 'TSB Contact form - '+req.body.name,
             
