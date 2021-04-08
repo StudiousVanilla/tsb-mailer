@@ -92,11 +92,11 @@ app.get('/blogs', (req, res)=>{
 
 // gets specific blog post
 // needs a blog reference in the request body
-app.get('/blogpost', (req, res)=>{
+app.get('/blogpost/:blogNumber', (req, res)=>{
 
-    const blogNumber = req.body.ref
+    const blogNumber = parseInt(req.params.blogNumber)
 
-    console.log(req.body.ref)
+    console.log(blogNumber)
     
     // pulls blog information for blog that matches title (the blogRef)
     db.collection("blogs").where('blogID', '==', blogNumber)
@@ -108,7 +108,6 @@ app.get('/blogpost', (req, res)=>{
             blog = doc.data()
         })
 
-        // update Sate
         res.send(blog)
     })
     .catch((error) => {
@@ -119,11 +118,11 @@ app.get('/blogpost', (req, res)=>{
 
 // gets blogs filtered by theme
 // needs a theme in the request body
-app.get('/blogfilter', (req, res)=>{
+app.get('/blogfilter/:theme', (req, res)=>{
 
-    const theme = req.body.theme
+    const theme = req.params.theme
 
-    console.log(req.body.theme)
+    console.log(theme)
     
     // pulls blog information based on if they are published and if they match the filtered theme from the url params
     db.collection("blogs")
@@ -151,7 +150,6 @@ app.get('/blogfilter', (req, res)=>{
 })
 
 // gets all blog themes, and most recent blog (for tsb Sidebar)
-// needs a theme in the request body
 app.get('/blogthemes', (req, res)=>{
     
     // pulls blog information based on number of blogs and if they are published

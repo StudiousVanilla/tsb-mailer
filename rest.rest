@@ -3,16 +3,12 @@ content-type: application/json
 
 ####
 
-GET http://localhost:3000/blogpost 
+GET http://localhost:3000/blogpost/2
 content-type: application/json
-
-{
-    "ref": 4
-}
 
 ####
 
-GET http://localhost:3000/blogfilter
+GET http://localhost:3000/blogfilter/Stress%20Management
 content-type: application/json
 
 {
