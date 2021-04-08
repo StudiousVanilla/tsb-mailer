@@ -1,8 +1,25 @@
-POST http://localhost:3000 
+GET http://localhost:3000/blogs 
+content-type: application/json
+
+####
+
+GET http://localhost:3000/blogpost 
 content-type: application/json
 
 {
-    "email": "byrne.ois@gmail.com",
-    "name": "Jane Doe",
-    "message": "Where are you going iowth you r lfectlicks blkowing inthe wind?"
+    "ref": 4
 }
+
+####
+
+GET http://localhost:3000/blogfilter
+content-type: application/json
+
+{
+    "theme": "Mentorship"
+}
+
+####
+
+GET http://localhost:3000/blogthemes 
+content-type: application/json
